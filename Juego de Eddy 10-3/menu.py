@@ -87,7 +87,7 @@ def Iniciar_disparo(x,y):
     global bulletstate
     arma_estado = "Fire"
     screen.blit(armaImg,(x+16,y+10))
-def iscollision(enemyX,enemyY,armaX,armaY):
+def isCollision(enemyX,enemyY,armaX,armaY):
     distance = math.sqrt(math.pow(enemyX-armaX)+(math.pow(enemyY-armaY,2)))
     if distance<27:
         return True
@@ -100,13 +100,15 @@ while running:
     # Imagen de fondo
     screen.blit(background,(0,0))
     for event in pygame.event.get():
-        if event.type == pygame.quit:
-            running =False
+        if event.type == pygame.QUIT:
+            running = False
 
 
             # si presiona derecha o izquierda
             if event.type==pygame.KEYDOWN:
                 if event.key==pygame.K_LEFT:
                    playerX_change=-5
-            if event.key==pygame.K_LEFT:
-                playerX_change= 5
+                if event.key==pygame.K_RIGHT:
+                   playerX_change= 5
+                
+                
